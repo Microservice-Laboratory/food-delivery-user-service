@@ -2,9 +2,17 @@ package main
 
 import (
 	"Microservice-Laboratory/food-delivery-user-service/internal/api"
+	"os"
 )
 
 func main() {
 	router := api.SetupRouter()
-	router.Run("localhost:8080")
+
+	var port = os.Getenv("PORT")
+
+	if port == "" {
+		port = "8080"
+	}
+
+	router.Run("localhost:" + port)
 }
