@@ -8,9 +8,9 @@ import (
 )
 
 var users = []dto.UserDto{
-	{ID: "123", Username: "Username", Email: "Email"},
+	{ID: "123", Username: "john_doe", Email: "john.doe@example.com"},
 }
 
 func GetUsersHandler(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, users)
+	c.JSON(http.StatusOK, users)
 }
