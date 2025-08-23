@@ -1,0 +1,43 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, generated with 'go test -c'
+*.test
+
+# Output of the go toolchain
+# https://golang.org/doc/go-build-default-architecture
+*.out
+
+# Dependency directories
+vendor/
+
+# Go module cache
+# If you are using Go modules, this directory stores downloaded module source code.
+# It's usually located in your GOPATH, but can be configured per project.
+# You typically don't commit this.
+.cache/
+go.sum
+go.mod # Only if you are not using modules, but you are, so keep this commented or remove it.
+
+# IDE and editor specific files
+.vscode/        # VS Code settings and launch configurations
+.idea/          # IntelliJ IDEA projects
+*.swp           # Vim swap files
+*.swo           # Vim swap files
+*~              # Emacs backup files
+.DS_Store       # macOS folder metadata
+Thumbs.db       # Windows thumbnail cache
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+*.log
+
+# Qodo specific files (if any local config or caches are created)
+.qodo/
