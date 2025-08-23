@@ -11,6 +11,8 @@ import (
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
 
+	r.Use(SetJSONContentType())
+
 	v1 := r.Group("/api/v1")
 	{
 		v1.GET("/health", healthcheck.HealthCheckHandler)
