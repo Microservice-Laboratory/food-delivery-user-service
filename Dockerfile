@@ -1,4 +1,5 @@
 FROM golang:1.25.0-alpine AS build
+RUN apk add --no-cache git
 
 WORKDIR /src
 
@@ -15,7 +16,8 @@ RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o food-delivery-user-service ./cmd/
 FROM gcr.io/distroless/static
 
 WORKDIR /app
+USER nonroot:nonroot
 
-COPY --from=build /src/food-delivery-user-service .
+COPY --from=build /src/food-delivery-user-service /app/food-delivery-user-service
 
-ENTRYPOINT ["./food-delivery-user-service"]
+ENTRYPOINT ["/app/food-delivery-user-service"]
