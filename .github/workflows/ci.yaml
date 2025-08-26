@@ -6,7 +6,7 @@ on:
     branches: ["develop"]
 
 jobs:
-  run-test:
+  run-test-and-code-quality:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
