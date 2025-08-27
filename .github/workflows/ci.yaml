@@ -49,8 +49,7 @@ jobs:
 
   cd-pipeline:
     runs-on: ubuntu-latest
-    #if: github.event_name == 'push'
-    needs: [ci-pipeline]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
 
     steps:
       - name: Checkout repository
