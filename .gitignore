@@ -16,7 +16,7 @@ vendor/
 # It's usually located in your GOPATH, but can be configured per project.
 # You typically don't commit this.
 .cache/
-go.sum
+# go.sum
 go.mod # Only if you are not using modules, but you are, so keep this commented or remove it.
 
 # IDE and editor specific files
