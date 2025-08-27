@@ -71,7 +71,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=sha
+            type=sha,format=short,prefix=
 
       - name: Build and push Docker image
         id: build-and-push
