@@ -1,3 +1,6 @@
+# Migration helpers
+cmd/migrate/
+
 # Binaries for programs and plugins
 bin/
 
