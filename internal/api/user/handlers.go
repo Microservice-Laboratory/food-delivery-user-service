@@ -1,16 +1,24 @@
 package user
 
 import (
-	"Microservice-Laboratory/food-delivery-user-service/internal/api/dto"
-	"net/http"
+	"Microservice-Laboratory/food-delivery-user-service/internal/service/users"
 
 	"github.com/gin-gonic/gin"
 )
 
-var users = []dto.UserDto{
-	{ID: "123", Username: "john_doe", Email: "john.doe@example.com"},
+type UserEndpoint struct {
+	userService *users.UserService
 }
 
-func GetUsersHandler(c *gin.Context) {
-	c.JSON(http.StatusOK, users)
+func NewUserEndpoint(userService *users.UserService) *UserEndpoint {
+	return &UserEndpoint{userService: userService}
+}
+
+func (ue *UserEndpoint) GetUsersHandler(c *gin.Context) {
+	users, err := ue.userService.GetUsers(c)
+	if err != nil {
+		c.JSON(500, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(200, users)
 }

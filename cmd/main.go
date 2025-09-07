@@ -2,11 +2,19 @@ package main
 
 import (
 	"Microservice-Laboratory/food-delivery-user-service/internal/api"
+	"Microservice-Laboratory/food-delivery-user-service/internal/infrastructure/db"
+	"log"
 	"os"
 )
 
 func main() {
-	router := api.SetupRouter()
+	database, err := db.NewConnection()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer database.Close()
+
+	router := api.SetupRouter(database)
 
 	var host = os.Getenv("HOST")
 	var port = os.Getenv("PORT")
@@ -19,7 +27,7 @@ func main() {
 		port = "8080"
 	}
 
-	err := router.Run(host + ":" + port)
+	err = router.Run(host + ":" + port)
 	if err != nil {
 		panic(err)
 	}
